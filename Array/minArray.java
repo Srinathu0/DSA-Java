@@ -10,7 +10,7 @@ public class minArray {
         return min;
     }
     public static void main(String args[]){
-        int minArr[] = {5,4,10,9,1};
+        int minArr[] = {5,9,3,15,1};
         int res = findMin(minArr);
         System.out.println(res);
     }

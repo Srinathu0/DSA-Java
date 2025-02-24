@@ -1,0 +1,42 @@
+1). singly linked list
+2). doubly linked list
+3). circular singly linked list
+4). arrays
+5). stacks
+6). queues
+7). binary tree
+8). binary heaps
+9). graphs
+10). matrix
+11). tries
+
+Types of Datastructres
+1). Linear [Array, LinkedList, Stack, Queue] (data elements are arranged in sequential manner, 
+    it is easy to traverse, stored in single level)
+2). Non Linear [Tree, Graph] (data stored in multi level)
+
+Time Complexity:
+    Its amount of time taken by algorithm to run.
+
+Space Complexity:
+    Its amount of memory or space taken by algorithm to run.
+
+Asymptotic Analysis: 
+    - Asymptotic notation is a mathematical tool used in computer science to describe the behavior 
+        of algorithms in terms of their running time or space requirements as the input size grows.
+    - Asymptotic analysis helps in evaluating performance of an algorithm in terms of 
+        input size and its increase.
+
+Day 1 [022/02]:
+Three types of notations:
+(i).   Omega Notation: Its the formal way of to express the lower bound of an algorithm. running time.
+       Lower bound [determines best amount of time an algorithm can take to complete].
+(ii).  Big O Notation: Its the formal way to express the upper bound of an algorithm running time.
+       Upper bound [determines the longest amount of time an algorithm can take to complete].
+(iii). Theta Notation: Its the formal way to express both the upper and lower bound of an algorithm
+       running time. It determines the average amount of time an algorithm can take to complete.
+
+Analysis of time Complexity
+- Big O Notation (Rules): Constant Algorithm, Linear Algorithm, Polynomial Algorithm
+
+Array:

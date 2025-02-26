@@ -10,7 +10,7 @@ public class singlyLinkedList{
         }
     }
 
-    public void display(){
+    public void display(Node head){
         Node current = head;
         while(current!=null){
             System.out.print(current.data+" -> ");
@@ -115,32 +115,171 @@ public class singlyLinkedList{
         }
     }
 
+    /* How to search an element in a Linked List in Java */
+    public boolean searchElement(int searchKey){
+        if(head == null){
+            return false;
+        }
+        Node current = head;
+        while(current!=null){
+            if(current.data == searchKey){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    /* How to reverse a singly linked list */
+    public Node reverseList(Node head){
+        if(head == null){
+            return head;
+        }
+        Node current = head;
+        Node next = null;
+        Node previous = null;
+
+        while(current != null){
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }
+
+    /* How to find nth Node from the end of Linked List */
+    public Node getNthNodeFromEnd(Node head, int position){
+        if(head==null){
+            return null;
+        }
+        if(position<=0){
+            throw new IllegalArgumentException("invalid value in position = "+position);
+        }
+        Node mainPtr=head;
+        Node refPtr=head;
+        int count=0;
+        while(count<position){
+            if(refPtr==null){
+                throw new IllegalArgumentException(position + " value is greater than the number of nodes");
+            }
+            refPtr=refPtr.next;
+            count++;
+        }
+        while(refPtr!=null){
+            refPtr=refPtr.next;
+            mainPtr=mainPtr.next;
+        }
+        return mainPtr;
+    }
+
+    /*remove duplicates from a sorted linked list */
+    public Node removeDuplicates(Node head){
+        if(head==null){
+            return null;
+        }
+        Node current=head;
+        while(current!=null && current.next!=null){
+            if(current.data==current.next.data){
+                current.next=current.next.next;
+                current=current.next;
+            }
+            else{
+                current=current.next;
+            }
+        }
+        return head;
+    }
+
+    /*insert a node in a sorted singly linked list */
+    public Node insertInSortedList(Node head,int value){
+        Node newNode=new Node(value);
+        if(head==null){
+            return newNode;
+        }
+        Node current=head;
+        Node temp=null;
+        while(current!=null && current.data<newNode.data){
+            temp=current;
+            current=current.next;
+        }
+        newNode.next=current;
+        temp.next=newNode;
+        return head;
+    }
+
+    /*remove given key from singly linked list*/
+    public void deleteNode(Node head, int key){
+        Node current=head;
+        Node temp=null;
+        if(current!=null && current.data==key){
+            head=current.next;
+            return;
+        }
+
+        while(current!=null && current.data!=key){
+            temp=current;
+            current=current.next;
+        }
+        if(current==null){
+            return;
+        }
+        temp.next=current.next;
+    }
+
     public static void main(String[] args) {
         singlyLinkedList sll = new singlyLinkedList();
-        sll.head = new Node(10);
-        Node second = new Node(5);
-        Node third= new Node(1);
-        sll.head.next = second;
+        // sll.head = new Node(10);
+        // Node second = new Node(5);
+        // Node third= new Node(1);
+        // sll.head.next = second;
+        // second.next = third;
+        // third.next = null;
+        // sll.display();
+        // System.out.println("Lenght is: "+sll.length()) ;
+        // //Node insertFirst = new Node(2);
+        // sll.insertFirst(2);
+        // sll.display();
+        // System.out.println("Lenght is: "+sll.length()) ;
+        // sll.insertEnd(20);
+        // sll.display();
+        // System.out.println("Lenght is: "+sll.length()) ;
+        // sll.insertAt(35, 3);
+        // sll.display();
+        // sll.insertAt(9, 1);
+        // sll.display();
+        // System.out.println("Deleted First Node: "+sll.deleteFirst().data);
+        // sll.display();
+        // System.out.println("Deleted Last Node: "+sll.deleteLast().data);
+        // sll.display();
+        // sll.deleteAt(3);
+        // sll.display();
+        // System.out.println(sll.searchElement(7));
+        Node head = new Node(2);
+        Node second = new Node(4);
+        Node third = new Node(4);
+        Node fourth = new Node(11);
+
+        head.next = second;
         second.next = third;
-        third.next = null;
-        sll.display();
-        System.out.println("Lenght is: "+sll.length()) ;
-        //Node insertFirst = new Node(2);
-        sll.insertFirst(2);
-        sll.display();
-        System.out.println("Lenght is: "+sll.length()) ;
-        sll.insertEnd(20);
-        sll.display();
-        System.out.println("Lenght is: "+sll.length()) ;
-        sll.insertAt(35, 3);
-        sll.display();
-        sll.insertAt(9, 1);
-        sll.display();
-        System.out.println("Deleted First Node: "+sll.deleteFirst().data);
-        sll.display();
-        System.out.println("Deleted Last Node: "+sll.deleteLast().data);
-        sll.display();
-        sll.deleteAt(3);
-        sll.display();
+        third.next = fourth;
+        sll.display(head);
+        //Node reversed = sll.reverseList(head);
+        //sll.display(reversed);
+        // Node nthData = sll.getNthNodeFromEnd(head, 3);
+        // System.out.println("The data at nth position is: "+nthData.data);
+        // Node ivaln= sll.getNthNodeFromEnd(head, 0);
+        // System.out.println("The data at nth position is: "+ivaln.data);
+        // Node greatern= sll.getNthNodeFromEnd(head, 23);
+        // System.out.println("The data at nth position is: "+greatern.data);
+
+        // Node noDuplicates=sll.removeDuplicates(head);
+        // sll.display(noDuplicates);
+
+        // Node insertInSorted=sll.insertInSortedList(head,3);
+        // sll.display(insertInSorted);
+
+        sll.deleteNode(head,4);
+        sll.display(head);
     }
 }

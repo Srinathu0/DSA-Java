@@ -219,6 +219,26 @@ public class singlyLinkedList{
         temp.next = current.next;
     }
 
+    /* Code for Creation of Loop */
+    public void loopCreation(){
+
+    }
+
+    /* Code for Detection of Loop using Fast n Slow pointer */
+    public void loopDetectionFastnSlow(){
+
+    }
+
+    /* Code for Detection of Loop using Hashmap */
+    public void loopDetectionHashMap(){
+
+    }
+
+    /* Code for Segregating ODD and Even in Linked List */
+    public void segregateOddEven(){
+        
+    }
+
     public static void main(String[] args) {
         singlyLinkedList sll = new singlyLinkedList();
         // sll.head = new Node(10);

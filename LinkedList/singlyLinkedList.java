@@ -133,12 +133,11 @@ public class singlyLinkedList{
     /* How to reverse a singly linked list */
     public Node reverseList(Node head){
         if(head == null){
-            return head;
+            return null;
         }
         Node current = head;
         Node next = null;
         Node previous = null;
-
         while(current != null){
             next = current.next;
             current.next = previous;
@@ -149,7 +148,7 @@ public class singlyLinkedList{
     }
 
     /* How to find nth Node from the end of Linked List */
-    public Node getNthNodeFromEnd(Node head, int position){
+    public Node getNthNodeFromEnd(Node head,int position){
         if(head==null){
             return null;
         }
@@ -173,58 +172,51 @@ public class singlyLinkedList{
         return mainPtr;
     }
 
-    /*remove duplicates from a sorted linked list */
-    public Node removeDuplicates(Node head){
-        if(head==null){
-            return null;
+    /* How to remove duplicates from sorted linked list */
+    public void removeDuplicates(Node head){
+        if(head == null){
+            return;
         }
-        Node current=head;
-        while(current!=null && current.next!=null){
-            if(current.data==current.next.data){
-                current.next=current.next.next;
-                current=current.next;
-            }
-            else{
-                current=current.next;
+        Node current = head;
+        while(current != null && current.next != null){
+            if(current.data == current.next.data){
+                current.next = current.next.next;
+                current = current.next;
+            }else{
+                current = current.next;
             }
         }
-        return head;
     }
 
-    /*insert a node in a sorted singly linked list */
-    public Node insertInSortedList(Node head,int value){
-        Node newNode=new Node(value);
-        if(head==null){
+    /* How to insert a node in a sorted linked list */
+    public Node insertNodeInSortedList(Node head,int val){
+        Node newNode = new Node(val);
+        if(head == null){
             return newNode;
         }
-        Node current=head;
-        Node temp=null;
-        while(current!=null && current.data<newNode.data){
-            temp=current;
-            current=current.next;
+        Node current  = head;
+        Node temp = null;
+        while(current != null && current.data < newNode.data){
+            temp = current;
+            current = current.next;
         }
-        newNode.next=current;
-        temp.next=newNode;
+        temp.next = newNode;
+        newNode.next = current;
         return head;
     }
 
-    /*remove given key from singly linked list*/
-    public void deleteNode(Node head, int key){
-        Node current=head;
-        Node temp=null;
-        if(current!=null && current.data==key){
-            head=current.next;
+    /* How to remove a given key from signly linkedlist  */
+    public void removeNodeFromList(Node head,int key){
+        Node current = head;
+        Node temp = null;
+        while(current != null && current.data != key){
+            temp = current;
+            current = current.next;
+        }
+        if(current == null){
             return;
         }
-
-        while(current!=null && current.data!=key){
-            temp=current;
-            current=current.next;
-        }
-        if(current==null){
-            return;
-        }
-        temp.next=current.next;
+        temp.next = current.next;
     }
 
     public static void main(String[] args) {
@@ -255,14 +247,16 @@ public class singlyLinkedList{
         // sll.deleteAt(3);
         // sll.display();
         // System.out.println(sll.searchElement(7));
-        Node head = new Node(2);
-        Node second = new Node(4);
-        Node third = new Node(4);
-        Node fourth = new Node(11);
+        Node head = new Node(1);
+        Node second = new Node(8);
+        Node third = new Node(8);
+        Node fourth = new Node(10);
+        Node fifth = new Node(16);
 
         head.next = second;
         second.next = third;
         third.next = fourth;
+        fourth.next = fifth;
         sll.display(head);
         //Node reversed = sll.reverseList(head);
         //sll.display(reversed);
@@ -278,8 +272,15 @@ public class singlyLinkedList{
 
         // Node insertInSorted=sll.insertInSortedList(head,3);
         // sll.display(insertInSorted);
-
-        sll.deleteNode(head,4);
+        //Node reversed = sll.reverseList(head);
+        //sll.display(reversed);
+        //Node nthNodeFromEnd = sll.getNthNodeFromEnd(head, 2);
+        //System.out.println("nth position data is: "+ nthNodeFromEnd.data);
+        sll.removeDuplicates(head);
+        sll.display(head);
+        sll.insertNodeInSortedList(head, 11);
+        sll.display(head);
+        sll.removeNodeFromList(head,11);
         sll.display(head);
     }
 }
